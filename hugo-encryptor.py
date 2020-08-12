@@ -49,7 +49,7 @@ if __name__ == '__main__':
                 block.string = written.decode()
 
             if len(blocks):
-                soup.body.append(soup.new_tag("script", src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/crypto-js.js"))
+                soup.body.append(soup.new_tag("script", src="https://cdn.bootcss.com/crypto-js/3.1.9-1/crypto-js.min.js"))
                 script_tag = soup.new_tag("script")
                 script_tag.string = """
 const _do_decrypt = function(encrypted, password) {
@@ -95,7 +95,7 @@ const _click_handler = function(element) {
     return;
   }
 
-  let storage = localStorage;
+  let storage = sessionStorage;
 
   let key = location.pathname + ".password." + index;
   storage.setItem(key, password);
@@ -111,7 +111,7 @@ window.onload = () => {
     ++index;
 
     let key = location.pathname + ".password." + index;
-    let password = localStorage.getItem(key);
+    let password = sessionStorage.getItem(key);
 
     if (!password) {
       break;
